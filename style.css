@@ -1,0 +1,38 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: grey;
+    margin: 0;
+    padding: 0;
+}
+
+#header{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    color: white;
+    background-color: rgb(14, 55, 71);
+    justify-content: center;
+}
+
+#nav-links{
+    text-decoration: none;
+    color: white;
+    justify-content: center;
+}
+
+#nav-links a{
+    margin: auto 5px;
+    text-decoration: none;
+}
+
+#nav-links a:link{
+    color: white;
+}
+
+#search_bar{
+}
