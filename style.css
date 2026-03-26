@@ -3,14 +3,18 @@
 }
 
 body{
-    background-color: grey;
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     margin: 0;
     padding: 0;
+    height: 100vh;
 }
 
 #header{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: auto 1fr auto;
     justify-content: space-around;
     text-align: center;
     align-items: center;
@@ -19,6 +23,10 @@ body{
     justify-content: center;
     padding: 0;
     margin: 0;
+}
+
+#title{
+    margin-left: 50px;
 }
 
 #nav-links{
@@ -30,6 +38,7 @@ body{
 #nav-links a{
     margin: auto 5px;
     text-decoration: none;
+    font-weight: bold;
 }
 
 #nav-links a:link{
@@ -37,18 +46,72 @@ body{
 }
 
 #search_bar {
-    display: flex;
-    align-items: center;
-    padding: 5px;
+    position: relative;
+    width: 400px;
   }
 
 #search_bar input{
+    width: 90%;
+    height: 45px;
     border-radius: 25px;
-    height: 35px;
-    width: 100%;
+    border: none;
+    padding: 0 160px 0 15px;
+    font-size: 13px;
 }
 
-#search_bar button{
+.search-buttons {
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.search-buttons button {
+    background-color: #2a9d8f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#main {
     position: relative;
-    right: 125px;
+    align-items: center;
+    align-content: center;
+    height:90vh;
+}
+
+#social {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    margin-left: 30px;
+    gap:40px;
+}
+
+#social a{
+    color: white;
+    width: 40px;
+    height: 40px;
+}
+
+#main-content{
+    margin-left: 150px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+}
+
+#main-content button{
+    width: fit-content;
+    padding: 4px 10px;
+    font-size: 12px;
 }
