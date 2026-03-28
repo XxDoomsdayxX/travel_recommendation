@@ -94,9 +94,10 @@ aside{
 }
 
 #contact{
-    position: relative;
+    display: flex;
+    flex-direction: column;
     width: 60%;
-    bottom: 50px;
+    padding-top: 50px;
 }
 
 #contact h1{
@@ -107,9 +108,60 @@ aside{
 
 #contact-form{
     display: flex;
-    margin-left: 400px;
-    max-width: 80%;
-    width: fit-content;
-    height: 80%;
-    border: 2px solid white;
+    margin-left: 300px;
+    flex-direction: column;
+    padding-bottom: 100px;
+    min-width: 50vh;
+    text-align: left;
+    min-height: 50vh;
+}
+
+#contact-form label{
+    display: block;
+    width: max-content;
+    margin: 50px 0 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+input, textarea{
+    border: 0.7px solid white;
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 5px;
+    width: 100%;
+    color: white;
+}
+
+input::placeholder,
+textarea::placeholder{
+    color: white;
+}
+
+input:focus,
+textarea:focus {
+    background-color: white;
+    color: black;
+}
+
+#contact-submit{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color:rgb(14, 55, 71);
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+    transition: all 0.1s linear;
+    padding: 5px;
+    font-weight: bold;
+    letter-spacing: 1.2;
+}
+
+#contact-submit:hover{
+    cursor: pointer;
+    border-collapse: collapse;
+    color: black;
+    transform: scale(1.02);
 }
