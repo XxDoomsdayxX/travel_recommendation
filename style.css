@@ -143,3 +143,7 @@ body{
     transform: scale(1.1);
     background-color: green;
 }
+
+.hidden{
+    opacity: 0;
+}

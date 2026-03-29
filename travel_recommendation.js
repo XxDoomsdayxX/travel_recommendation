@@ -7,14 +7,15 @@ async function loadData() {
          const travelData = await response.json();
 
         btn.disabled = false;
-        displayResults(travelData);
+        setupSearch(travelData);
     } catch (error) {
         console.log('Error:', error);
     }
 }
 
-function displayResults(destinations) {
+function setupSearch(destinations) {
     document.querySelector("#search-btn").addEventListener("click", () => {
+        const resultContainer = document.querySelector("#results");
         const input = document.querySelector("input").value;
         const keyword = input.toLowerCase();
     
@@ -24,25 +25,45 @@ function displayResults(destinations) {
         }
     
         if (keyword.includes("country")){
-            console.log(destinations.countries);
+            displayResults(destinations.countries);
         }else if (keyword.includes("beach")){
-            console.log(destinations.beaches);
+            displayResults(destinations.beaches);
         }else if (keyword.includes("temple")){
-            console.log(destinations.temples);
+            displayResults(destinations.temples);
         }else{
             console.log("no results");
         }
      });
-    
+  }
 
-    console.log("Here is the data:", destinations);
-  }  
+function displayResults(results) {
+    if (!results || results.length === 0) {
+        return;
+    }
 
-loadData();
+    const resultContainer = document.querySelector("#results");
+    const result = results[0];
+    resultContainer.innerHTML = "";
 
- //clear button logic
- document.querySelector("#clear-btn").addEventListener("click", () => {
+    const card = document.createElement("div");
+    card.classList.add("result-card");
+
+    card.innerHTML = `
+        <img src="${result.imageUrl}" alt="${result.name}">
+        <h3>${result.name}</h3>
+        <p>${result.description}</p>
+        `;
+
+    resultContainer.appendChild(card);
+}
+
+//clear button logic
+document.querySelector("#clear-btn").addEventListener("click", () => {
+    const resultContainer = document.querySelector("#results");
     const input = document.querySelector("input");
     input.value = "";
+    resultContainer.innerHTML = "";
  });
+
+loadData();
 
