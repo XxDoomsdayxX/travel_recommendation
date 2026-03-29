@@ -23,9 +23,10 @@ function setupSearch(destinations) {
             console.log("Data not loaded yet");
             return;
         }
-    
+
         if (keyword.includes("country")){
-            displayResults(destinations.countries);
+            const allCities = destinations.countries.flatMap(country => country.cities);
+            displayResults(allCities);
         }else if (keyword.includes("beach")){
             displayResults(destinations.beaches);
         }else if (keyword.includes("temple")){
@@ -36,33 +37,38 @@ function setupSearch(destinations) {
      });
   }
 
-function displayResults(results) {
+  function displayResults(results) {
     if (!results || results.length === 0) {
         return;
     }
 
+    const mainContent = document.querySelector("#main-content");
     const resultContainer = document.querySelector("#results");
-    const result = results[0];
     resultContainer.innerHTML = "";
+    mainContent.classList.add("hidden");
 
-    const card = document.createElement("div");
-    card.classList.add("result-card");
+    results.forEach(result => {
+        const card = document.createElement("div");
+        card.classList.add("result-card");
 
-    card.innerHTML = `
-        <img src="${result.imageUrl}" alt="${result.name}">
-        <h3>${result.name}</h3>
-        <p>${result.description}</p>
+        card.innerHTML = `
+            <img src="${result.imageUrl}" alt="${result.name}">
+            <h3>${result.name}</h3>
+            <p>${result.description}</p>
         `;
 
-    resultContainer.appendChild(card);
+        resultContainer.appendChild(card);
+    });
 }
 
 //clear button logic
 document.querySelector("#clear-btn").addEventListener("click", () => {
+    const mainContent = document.querySelector("#main-content");
     const resultContainer = document.querySelector("#results");
     const input = document.querySelector("input");
     input.value = "";
     resultContainer.innerHTML = "";
+    mainContent.classList.remove("hidden");
  });
 
 loadData();

@@ -9,7 +9,8 @@ body{
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    max-height: 100vh;
+    min-height: 100vh;
 }
 
 #header{
@@ -146,4 +147,32 @@ body{
 
 .hidden{
     opacity: 0;
+}
+
+#results{
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.result-card {
+    background: white;
+    color: black;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.result-card img {
+    width: 275px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
 }
